@@ -1,0 +1,38 @@
+---
+title: "Data Product Assignment"
+author: "Mahmoud Samy"
+date: "January 3, 2019"
+output:
+  slidy_presentation: default
+  beamer_presentation: default
+  ioslides_presentation: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+##Statistical Analysis of mtcars Dataset
+
+-My Goal is  Create a Web Page Presentation using R Markdown that features a plot created with Plotly.and then Hosting my webpage on either GitHub Pages, RPubs, or NeoCities. 
+
+-For Example i will use mtcars Dataset to undestand the Relationship of MPG to other Factors
+ and Show my Data Visualization.
+
+## Understanding Gas Mileage(MPG)
+
+We plot `wt` vs.`mpg` and visualize the number of `cyl` as colors
+and the amount of `hp` as the size of an individual point in the plot.
+
+
+## Visualizing the Data
+
+```{r plot,fig.cap='My Figure',fig.align='center'}
+suppressPackageStartupMessages(library(plotly))
+plot_ly(data = mtcars, x = ~wt, y = ~mpg, 
+        color = ~as.factor(cyl), size = ~hp,
+        text = ~paste("Weight: ", wt, '<br>MPG:', mpg),
+        type = "scatter", mode = "markers") %>%
+  layout(title = "Car Data")
+```
+
